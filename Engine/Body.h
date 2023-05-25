@@ -19,7 +19,7 @@ public:
 		mass{ mass },
 		type{ type }
 	{
-		invMass = (mass == 0) ? 0 : 1 / mass;
+		invMass = (mass == 0 || type != DYNAMIC) ? 0 : 1 / mass;
 	}
 
 	void ApplyForce(const glm::vec2& force);
@@ -43,4 +43,6 @@ public:
 	float mass{ 1 };
 	float damping{ 5.0f };
 	float invMass{ 1 };
+	
+	float restitution{ 0.9f };
 };
